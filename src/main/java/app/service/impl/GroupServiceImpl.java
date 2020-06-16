@@ -1,6 +1,7 @@
-package app.service;
+package app.service.impl;
 
 import app.dto.GroupDto;
+import app.service.GroupService;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -18,7 +19,7 @@ public class GroupServiceImpl implements GroupService {
     public GroupDto getGroupById(Long id) {
         GroupDto groupDto = new GroupDto();
         groupDto.setId(2L);
-        groupDto.setGroupname("Cats");
+        groupDto.setGroupName("Cats");
         groupDto.setParentId(1L);
         return groupDto;
     }

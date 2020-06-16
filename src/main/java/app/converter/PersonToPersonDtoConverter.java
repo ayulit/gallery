@@ -12,7 +12,7 @@ public class PersonToPersonDtoConverter implements Converter<Person, PersonDto> 
         PersonDto personDto = new PersonDto();
         personDto.setId(person.getId());
         personDto.setEmail(person.getEmail());
-        personDto.setUsername(person.getUsername());
+        personDto.setUserName(person.getUserName());
         return personDto;
     }
 }

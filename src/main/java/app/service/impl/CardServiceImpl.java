@@ -1,7 +1,8 @@
-package app.service;
+package app.service.impl;
 
 import app.dto.CardDto;
 import app.dto.MetaDto;
+import app.service.CardService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

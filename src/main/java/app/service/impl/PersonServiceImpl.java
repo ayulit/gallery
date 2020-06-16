@@ -1,9 +1,10 @@
-package app.service;
+package app.service.impl;
 
 import app.dto.PersonDto;
 import app.entity.Person;
 import app.exception.PersonException;
 import app.repository.PersonRepository;
+import app.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class PersonServiceImpl implements PersonService {
         Person person = personRepository.findById(personDto.getId()).orElseThrow(()->new PersonException("Person not found."));
 
         person.setEmail(personDto.getEmail());
-        person.setUsername(personDto.getUsername());
+        person.setUserName(personDto.getUserName());
 
         return conversionService.convert(personRepository.save(person), PersonDto.class);
     }

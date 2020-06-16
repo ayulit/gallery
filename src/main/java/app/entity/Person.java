@@ -9,8 +9,8 @@ public class Person extends EntityBase {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "user_name")
+    private String userName;
 
     public String getEmail() {
         return email;
@@ -20,11 +20,11 @@ public class Person extends EntityBase {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

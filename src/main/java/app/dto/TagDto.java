@@ -2,28 +2,15 @@ package app.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.io.Serializable;
+public class TagDto extends BaseDto {
+    @JsonProperty(value = "tag_name")
+    private String tagName;
 
-public class TagDto implements Serializable {
-    @JsonProperty(value = "id")
-    private Long id;
-
-    @JsonProperty(value = "tagname")
-    private String tagname;
-
-    public Long getId() {
-        return id;
+    public String getTagName() {
+        return tagName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTagname() {
-        return tagname;
-    }
-
-    public void setTagname(String tagname) {
-        this.tagname = tagname;
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
     }
 }

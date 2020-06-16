@@ -2,14 +2,10 @@ package app.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class CardDto implements Serializable {
-    @JsonProperty(value = "id")
-    private Long id;
-
+public class CardDto extends BaseDto {
     @JsonProperty(value = "title")
     private String title;
 
@@ -33,14 +29,6 @@ public class CardDto implements Serializable {
 
     @JsonProperty(value = "link")
     private String link;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;

@@ -1,6 +1,7 @@
-package app.service;
+package app.service.impl;
 
 import app.dto.TagDto;
+import app.service.TagService;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -18,7 +19,7 @@ public class TagServiceImpl implements TagService {
 
         TagDto tagDto = new TagDto();
         tagDto.setId(1L);
-        tagDto.setTagname("cat");
+        tagDto.setTagName("cat");
 
         return tagDto;
     }

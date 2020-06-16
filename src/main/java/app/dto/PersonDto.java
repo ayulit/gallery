@@ -3,26 +3,13 @@ package app.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.io.Serializable;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PersonDto implements Serializable {
-    @JsonProperty(value = "id")
-    private Long id;
-
+public class PersonDto extends BaseDto {
     @JsonProperty(value = "email")
     private String email;
 
-    @JsonProperty(value = "username")
-    private String username;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @JsonProperty(value = "user_name")
+    private String userName;
 
     public String getEmail() {
         return email;
@@ -32,11 +19,11 @@ public class PersonDto implements Serializable {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

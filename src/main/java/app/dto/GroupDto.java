@@ -2,32 +2,19 @@ package app.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.io.Serializable;
-
-public class GroupDto implements Serializable {
-    @JsonProperty(value = "id")
-    private Long id;
-
-    @JsonProperty(value = "tagname")
-    private String groupname;
+public class GroupDto extends BaseDto {
+    @JsonProperty(value = "group_name")
+    private String groupName;
 
     @JsonProperty(value = "parent")
     private Long parentId;
 
-    public Long getId() {
-        return id;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getGroupname() {
-        return groupname;
-    }
-
-    public void setGroupname(String groupname) {
-        this.groupname = groupname;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     public Long getParentId() {
