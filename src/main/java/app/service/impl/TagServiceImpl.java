@@ -31,7 +31,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public TagDto getTagByName(String name) {
-        Tag tag = tagRepository.findByName(name);
+        Tag tag = tagRepository.findByTagName(name);
         return conversionService.convert(tag, TagDto.class);
 
     }
@@ -44,7 +44,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public TagDto updateTag(TagDto tagDto) {
-        Tag tag = tagRepository.findByName(tagDto.getTagName());
+        Tag tag = tagRepository.findByTagName(tagDto.getTagName());
         tag.setTagName(tagDto.getTagName());
 
         return conversionService.convert(tagRepository.save(tag), TagDto.class);

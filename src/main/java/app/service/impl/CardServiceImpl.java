@@ -58,7 +58,7 @@ public class CardServiceImpl implements CardService {
         card.setMeta(conversionService.convert(cardDto.getMeta(), Meta.class));
 
         Set<String> tagNames = cardDto.getTags();
-        Set<Tag> tags = tagRepository.getTagsByNames(tagNames);
+        Set<Tag> tags = tagRepository.findByTagNameIn(tagNames);
 
         card.setTags(tags);
         card.setLink(cardDto.getLink());
@@ -81,7 +81,7 @@ public class CardServiceImpl implements CardService {
         card.setMeta(conversionService.convert(cardDto.getMeta(), Meta.class));
 
         Set<String> tagNames = cardDto.getTags();
-        Set<Tag> tags = tagRepository.getTagsByNames(tagNames);
+        Set<Tag> tags = tagRepository.findByTagNameIn(tagNames);
 
         card.setTags(tags);
         card.setLink(cardDto.getLink());
