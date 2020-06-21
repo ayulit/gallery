@@ -3,7 +3,7 @@ package app.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 public class CardDto extends BaseDto {
     @JsonProperty(value = "title")
@@ -25,7 +25,7 @@ public class CardDto extends BaseDto {
     private MetaDto meta;
 
     @JsonProperty(value = "tags")
-    private List<String> tags;
+    private Set<String> tags;
 
     @JsonProperty(value = "link")
     private String link;
@@ -78,11 +78,11 @@ public class CardDto extends BaseDto {
         this.meta = meta;
     }
 
-    public List<String> getTags() {
+    public Set<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(Set<String> tags) {
         this.tags = tags;
     }
 

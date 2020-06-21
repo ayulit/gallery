@@ -22,7 +22,7 @@ public class Card extends EntityBase {
     private LocalDateTime date;
 
     @Column(name = "group_id")
-    private String groupId;
+    private Long groupId;
 
     @Column(name = "description")
     private String description;
@@ -57,11 +57,11 @@ public class Card extends EntityBase {
         this.date = date;
     }
 
-    public String getGroupId() {
+    public Long getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(String groupId) {
+    public void setGroupId(Long groupId) {
         this.groupId = groupId;
     }
 
@@ -71,6 +71,14 @@ public class Card extends EntityBase {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Meta getMeta() {
+        return meta;
+    }
+
+    public void setMeta(Meta meta) {
+        this.meta = meta;
     }
 
     public Set<Tag> getTags() {
