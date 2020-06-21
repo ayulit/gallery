@@ -21,7 +21,7 @@ public class Card extends EntityBase {
     private String title;
 
     @Column(name = "added")
-    private LocalDateTime date;
+    private LocalDateTime addedDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
@@ -52,12 +52,12 @@ public class Card extends EntityBase {
         this.title = title;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getAddedDate() {
+        return addedDate;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setAddedDate(LocalDateTime addedDate) {
+        this.addedDate = addedDate;
     }
 
     public Group getGroup() {

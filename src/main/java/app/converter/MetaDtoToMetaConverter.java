@@ -10,7 +10,7 @@ public class MetaDtoToMetaConverter implements Converter<MetaDto, Meta> {
     @Override
     public Meta convert(MetaDto metaDto) {
         Meta meta = new Meta();
-        meta.setDpi(meta.getDpi());
+        meta.setDpi(metaDto.getDpi());
 
         return meta;
     }

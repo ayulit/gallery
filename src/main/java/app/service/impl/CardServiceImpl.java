@@ -54,7 +54,7 @@ public class CardServiceImpl implements CardService {
         Card card = cardRepository.findById(cardDto.getId()).orElseThrow(() -> new CardException("Card not found."));
 
         card.setTitle(cardDto.getTitle());
-        card.setDate(cardDto.getDate());
+        card.setAddedDate(cardDto.getDate());
 
         Group group = new Group();
         group.setId(cardDto.getGroupId());

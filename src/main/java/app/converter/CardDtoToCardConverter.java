@@ -6,19 +6,16 @@ import app.entity.Group;
 import app.entity.Meta;
 import app.entity.Tag;
 import app.repository.TagRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
-@Component
 public class CardDtoToCardConverter implements Converter<CardDto, Card> {
     private final TagRepository tagRepository;
     private final ConversionService conversionService;
 
-    @Autowired
     public CardDtoToCardConverter(TagRepository tagRepository, ConversionService conversionService) {
         this.tagRepository = tagRepository;
         this.conversionService = conversionService;
@@ -28,7 +25,7 @@ public class CardDtoToCardConverter implements Converter<CardDto, Card> {
     public Card convert(CardDto cardDto) {
         Card card = new Card();
         card.setTitle(cardDto.getTitle());
-        card.setDate(cardDto.getDate());
+        card.setAddedDate(LocalDateTime.now());
 
         Group group = new Group();
         group.setId(cardDto.getGroupId());
