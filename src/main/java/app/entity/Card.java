@@ -4,9 +4,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -21,8 +23,9 @@ public class Card extends EntityBase {
     @Column(name = "added")
     private LocalDateTime date;
 
-    @Column(name = "group_id")
-    private Long groupId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
+    private Group group;
 
     @Column(name = "description")
     private String description;
@@ -57,12 +60,12 @@ public class Card extends EntityBase {
         this.date = date;
     }
 
-    public Long getGroupId() {
-        return groupId;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public String getDescription() {

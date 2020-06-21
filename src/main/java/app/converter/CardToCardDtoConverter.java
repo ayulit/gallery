@@ -28,7 +28,7 @@ public class CardToCardDtoConverter implements Converter<Card, CardDto> {
         cardDto.setId(card.getId());
         cardDto.setTitle(card.getTitle());
         cardDto.setDate(card.getDate());
-        cardDto.setGroupId(card.getGroupId());
+        cardDto.setGroupId(card.getGroup().getId());
         cardDto.setDescription(card.getDescription());
         cardDto.setMeta(conversionService.convert(card.getMeta(), MetaDto.class));
 

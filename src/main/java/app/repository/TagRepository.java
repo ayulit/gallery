@@ -12,6 +12,8 @@ public interface TagRepository extends JpaRepository<Tag, Long> {
     @Query("SELECT t FROM Tag t WHERE t.tagName = ?1")
     Tag findByName(String name);
 
+    Tag findByTagName(String name);
+
     @Query("SELECT t FROM Tag t WHERE t.tagName in ?1")
     Set<Tag> getTagsByNames(Set<String> tagNames);
 }

@@ -2,6 +2,7 @@ package app.service.impl;
 
 import app.dto.CardDto;
 import app.entity.Card;
+import app.entity.Group;
 import app.entity.Meta;
 import app.entity.Tag;
 import app.exception.CardException;
@@ -48,7 +49,11 @@ public class CardServiceImpl implements CardService {
         Card card = new Card();
         card.setTitle(cardDto.getTitle());
         card.setDate(cardDto.getDate());
-        card.setGroupId(cardDto.getGroupId());
+
+        Group group = new Group();
+        group.setId(cardDto.getGroupId());
+        card.setGroup(group);
+
         card.setDescription(cardDto.getDescription());
         card.setMeta(conversionService.convert(cardDto.getMeta(), Meta.class));
 
@@ -67,7 +72,11 @@ public class CardServiceImpl implements CardService {
 
         card.setTitle(cardDto.getTitle());
         card.setDate(cardDto.getDate());
-        card.setGroupId(cardDto.getGroupId());
+
+        Group group = new Group();
+        group.setId(cardDto.getGroupId());
+        card.setGroup(group);
+
         card.setDescription(cardDto.getDescription());
         card.setMeta(conversionService.convert(cardDto.getMeta(), Meta.class));
 

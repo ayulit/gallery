@@ -10,8 +10,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tag")
 public class Tag extends EntityBase {
-    // TODO unique
-    @Column(name = "tag_name", nullable = false)
+    @Column(name = "tag_name", nullable = false, unique = true)
     private String tagName;
 
     @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
