@@ -45,24 +45,7 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public CardDto createCard(CardDto cardDto) {
-
-        Card card = new Card();
-        card.setTitle(cardDto.getTitle());
-        card.setDate(cardDto.getDate());
-
-        Group group = new Group();
-        group.setId(cardDto.getGroupId());
-        card.setGroup(group);
-
-        card.setDescription(cardDto.getDescription());
-        card.setMeta(conversionService.convert(cardDto.getMeta(), Meta.class));
-
-        Set<String> tagNames = cardDto.getTags();
-        Set<Tag> tags = tagRepository.findByTagNameIn(tagNames);
-
-        card.setTags(tags);
-        card.setLink(cardDto.getLink());
-
+        Card card = conversionService.convert(cardDto, Card.class);
         return conversionService.convert(cardRepository.save(card), CardDto.class);
     }
 
