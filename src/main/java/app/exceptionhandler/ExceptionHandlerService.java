@@ -1,6 +1,7 @@
 package app.exceptionhandler;
 
 import app.exception.CardException;
+import app.exception.GroupException;
 import app.exception.PersonException;
 import app.exception.TagException;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,11 @@ public class ExceptionHandlerService {
 
     @ExceptionHandler(TagException.class)
     public ResponseEntity<String> handler(TagException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(GroupException.class)
+    public ResponseEntity<String> handler(GroupException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
