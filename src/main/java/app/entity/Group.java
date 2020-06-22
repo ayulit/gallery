@@ -1,5 +1,8 @@
 package app.entity;
 
+import lombok.Data;
+import lombok.ToString;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "category")
 public class Group extends EntityBase {
@@ -14,21 +18,6 @@ public class Group extends EntityBase {
     private String groupName;
 
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<Card> cards;
-
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
-
-    public List<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
-    }
 }

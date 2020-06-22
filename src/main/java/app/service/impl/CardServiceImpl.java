@@ -9,27 +9,24 @@ import app.exception.CardException;
 import app.repository.CardRepository;
 import app.repository.TagRepository;
 import app.service.CardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class CardServiceImpl implements CardService {
 
     private final CardRepository cardRepository;
     private final TagRepository tagRepository;
     private final ConversionService conversionService;
-
-    @Autowired
-    public CardServiceImpl(CardRepository cardRepository, TagRepository tagRepository, ConversionService conversionService) {
-        this.cardRepository = cardRepository;
-        this.tagRepository = tagRepository;
-        this.conversionService = conversionService;
-    }
 
     @Override
     public List<CardDto> getAll() {

@@ -4,19 +4,17 @@ import app.dto.CardDto;
 import app.dto.MetaDto;
 import app.entity.Card;
 import app.entity.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 public class CardToCardDtoConverter implements Converter<Card, CardDto> {
 
     private final ConversionService conversionService;
-
-    public CardToCardDtoConverter(ConversionService conversionService) {
-        this.conversionService = conversionService;
-    }
 
     @Override
     public CardDto convert(Card card) {

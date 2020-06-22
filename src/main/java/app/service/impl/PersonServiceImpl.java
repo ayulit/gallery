@@ -5,6 +5,7 @@ import app.entity.Person;
 import app.exception.PersonException;
 import app.repository.PersonRepository;
 import app.service.PersonService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
@@ -13,16 +14,11 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository personRepository;
     private final ConversionService conversionService;
-
-    @Autowired
-    public PersonServiceImpl(PersonRepository personRepository, ConversionService conversionService) {
-        this.personRepository = personRepository;
-        this.conversionService = conversionService;
-    }
 
     @Override
     public PersonDto getPersonById(Long id) {

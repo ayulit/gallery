@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.TagDto;
 import app.service.TagService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +18,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tags")
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class TagController {
     private final TagService tagService;
-
-    @Autowired
-    public TagController(TagService tagService) {
-        this.tagService = tagService;
-    }
 
     @GetMapping
     public List<TagDto> getAll() {

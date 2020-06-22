@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.CardDto;
 import app.service.CardService;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,13 +23,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cards")
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class CardController {
     private final CardService cardService;
-
-    @Autowired
-    public CardController(CardService cardService) {
-        this.cardService = cardService;
-    }
 
     @GetMapping
     public List<CardDto> getAll() {

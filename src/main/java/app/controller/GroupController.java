@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.GroupDto;
 import app.service.GroupService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +18,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/groups")
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class GroupController {
     private final GroupService groupService;
-
-    @Autowired
-    public GroupController(GroupService groupService) {
-        this.groupService = groupService;
-    }
 
     @GetMapping
     public List<GroupDto> getAll() {

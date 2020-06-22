@@ -6,20 +6,17 @@ import app.entity.Group;
 import app.entity.Meta;
 import app.entity.Tag;
 import app.repository.TagRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@RequiredArgsConstructor
 public class CardDtoToCardConverter implements Converter<CardDto, Card> {
     private final TagRepository tagRepository;
     private final ConversionService conversionService;
-
-    public CardDtoToCardConverter(TagRepository tagRepository, ConversionService conversionService) {
-        this.tagRepository = tagRepository;
-        this.conversionService = conversionService;
-    }
 
     @Override
     public Card convert(CardDto cardDto) {

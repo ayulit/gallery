@@ -4,24 +4,22 @@ import app.dto.TagDto;
 import app.entity.Tag;
 import app.repository.TagRepository;
 import app.service.TagService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class TagServiceImpl implements TagService {
 
     private final TagRepository tagRepository;
     private final ConversionService conversionService;
-
-    @Autowired
-    public TagServiceImpl(TagRepository tagRepository, ConversionService conversionService) {
-        this.tagRepository = tagRepository;
-        this.conversionService = conversionService;
-    }
 
     @Override
     public List<TagDto> getAll() {
