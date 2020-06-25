@@ -3,11 +3,11 @@ package app.service.impl;
 import app.dto.PersonDto;
 import app.entity.Person;
 import app.exception.PersonException;
+import app.mapper.PersonMapper;
 import app.repository.PersonRepository;
 import app.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,18 +18,18 @@ import javax.transaction.Transactional;
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository personRepository;
-    private final ConversionService conversionService;
+    private final PersonMapper personMapper;
 
     @Override
     public PersonDto getPersonById(Long id) {
         Person person = personRepository.findById(id).orElseThrow(() -> new PersonException("Person not found."));
-        return conversionService.convert(person, PersonDto.class);
+        return personMapper.personToPersonDto(person);
     }
 
     @Override
     public PersonDto createPerson(PersonDto personDto) {
-        Person person = conversionService.convert(personDto, Person.class);
-        return conversionService.convert(personRepository.save(person), PersonDto.class);
+        Person person = personMapper.personDtoToPerson(personDto);
+        return personMapper.personToPersonDto(personRepository.save(person));
     }
 
     @Override
@@ -39,7 +39,7 @@ public class PersonServiceImpl implements PersonService {
         person.setEmail(personDto.getEmail());
         person.setUserName(personDto.getUserName());
 
-        return conversionService.convert(personRepository.save(person), PersonDto.class);
+        return personMapper.personToPersonDto(personRepository.save(person));
     }
 
     @Override
