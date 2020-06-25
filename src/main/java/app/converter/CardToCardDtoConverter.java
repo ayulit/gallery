@@ -5,13 +5,16 @@ import app.dto.MetaDto;
 import app.entity.Card;
 import app.entity.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@RequiredArgsConstructor
+@Component
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class CardToCardDtoConverter implements Converter<Card, CardDto> {
 
     private final ConversionService conversionService;

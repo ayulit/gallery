@@ -7,13 +7,16 @@ import app.entity.Meta;
 import app.entity.Tag;
 import app.repository.TagRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@RequiredArgsConstructor
+@Component
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class CardDtoToCardConverter implements Converter<CardDto, Card> {
     private final TagRepository tagRepository;
     private final ConversionService conversionService;
