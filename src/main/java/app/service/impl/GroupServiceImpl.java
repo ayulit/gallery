@@ -1,5 +1,6 @@
 package app.service.impl;
 
+import app.converter.CustomConversionService;
 import app.dto.GroupDto;
 import app.entity.Group;
 import app.exception.PersonException;
@@ -7,12 +8,10 @@ import app.repository.GroupRepository;
 import app.service.GroupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -20,12 +19,12 @@ import java.util.stream.Collectors;
 public class GroupServiceImpl implements GroupService {
 
     private final GroupRepository groupRepository;
-    private final ConversionService conversionService;
+    private final CustomConversionService conversionService;
 
     @Override
     public List<GroupDto> getAll() {
         List<Group> groups = groupRepository.findAll();
-        return groups.stream().map(group -> conversionService.convert(group, GroupDto.class)).collect(Collectors.toList());
+        return conversionService.convert(groups, GroupDto.class);
     }
 
     @Override
