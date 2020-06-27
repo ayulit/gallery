@@ -10,4 +10,6 @@ public interface GroupService {
     GroupDto createGroup(GroupDto groupDto);
     GroupDto updateGroup(GroupDto groupDto);
     void deleteGroup(Long id);
+
+    List<GroupDto> getGroupsByTagName(String tagName);
 }

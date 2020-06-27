@@ -32,6 +32,11 @@ public class GroupController {
         return groupService.getGroupById(id);
     }
 
+    @GetMapping("/tag/{tagName}")
+    public List<GroupDto> getGroupsByTagName(@PathVariable String tagName) {
+        return groupService.getGroupsByTagName(tagName);
+    }
+
     @PostMapping
     public GroupDto createGroup(@RequestBody GroupDto groupDto) {
         return groupService.createGroup(groupDto);

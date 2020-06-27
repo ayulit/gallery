@@ -51,4 +51,9 @@ public class GroupServiceImpl implements GroupService {
     public void deleteGroup(Long id) {
 
     }
+
+    @Override
+    public List<GroupDto> getGroupsByTagName(String tagName) {
+        return conversionService.convert(groupRepository.searchGroupsByTagName(tagName), GroupDto.class);
+    }
 }
