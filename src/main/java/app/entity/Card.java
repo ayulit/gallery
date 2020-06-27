@@ -1,5 +1,6 @@
 package app.entity;
 
+import app.enums.Operation;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -13,7 +14,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.Version;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -58,4 +64,32 @@ public class Card extends EntityBase {
     public void removeTag(Tag tag) {
         tags.remove(tag);
     }
+
+    /* AUDIT */
+
+    @Version
+    private Long version;
+
+    @Transient
+    private Operation operation;
+
+    @PrePersist
+    public void onPrePersist() {
+        audit(Operation.INSERT);
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        audit(Operation.UPDATE);
+    }
+
+    @PreRemove
+    public void onPreRemove() {
+        audit(Operation.DELETE);
+    }
+
+    private void audit(Operation operation) {
+        setOperation(operation);
+    }
+
 }

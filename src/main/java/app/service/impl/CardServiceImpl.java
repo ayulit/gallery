@@ -15,6 +15,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -51,7 +52,7 @@ public class CardServiceImpl implements CardService {
         Card card = cardRepository.findById(cardDto.getId()).orElseThrow(() -> new CardException("Card not found."));
 
         card.setTitle(cardDto.getTitle());
-        card.setAddedDate(cardDto.getDate());
+        card.setAddedDate(LocalDateTime.now());
 
         Group group = new Group();
         group.setId(cardDto.getGroupId());
