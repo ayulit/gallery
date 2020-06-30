@@ -6,6 +6,7 @@ import app.entity.Group;
 import app.exception.PersonException;
 import app.repository.GroupRepository;
 import app.service.GroupService;
+import app.util.SpecificationUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,6 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<GroupDto> getGroupsByTagName(String tagName) {
-        return conversionService.convert(groupRepository.searchGroupsByTagName(tagName), GroupDto.class);
+        return conversionService.convert(groupRepository.findAll(SpecificationUtil.groupsByTagName(tagName)), GroupDto.class);
     }
 }
