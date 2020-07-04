@@ -12,6 +12,9 @@ import java.util.List;
 @Repository
 public interface GroupRepository extends JpaRepository<Group, Long>, JpaSpecificationExecutor<Group> {
 
-    @Query("select distinct category from Group category left join fetch category.cards card left join fetch card.tags tag where tag.tagName like %:tagName%")
+    @Query("select distinct category from Group category " +
+            "left join category.cards card " +
+            "left join card.tags tag " +
+            "where tag.tagName like %:tagName%")
     List<Group> searchGroupsByTagName(@Param("tagName") String tagName);
 }
