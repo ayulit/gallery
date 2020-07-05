@@ -1,6 +1,7 @@
 package app.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "category")
+@EqualsAndHashCode(callSuper = true)
 public class Group extends EntityBase {
     @Column(name = "group_name", nullable = false)
     private String groupName;

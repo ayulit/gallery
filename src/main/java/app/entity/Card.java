@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(exclude = {"group", "tags"}, callSuper = false)
+@EqualsAndHashCode(exclude = {"group", "tags"}, callSuper = true)
 @Entity
 @Table(name = "card")
 public class Card extends EntityBase {

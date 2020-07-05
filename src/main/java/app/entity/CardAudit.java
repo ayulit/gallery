@@ -2,6 +2,7 @@ package app.entity;
 
 import app.enums.Operation;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "card_audit")
+@EqualsAndHashCode(callSuper = true)
 public class CardAudit extends EntityBase {
 
     @CreationTimestamp

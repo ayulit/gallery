@@ -1,6 +1,7 @@
 package app.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "tag")
+@EqualsAndHashCode(callSuper = true)
 public class Tag extends EntityBase {
     @Column(name = "tag_name", nullable = false, unique = true)
     private String tagName;
