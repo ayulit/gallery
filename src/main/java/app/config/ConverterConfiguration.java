@@ -17,7 +17,7 @@ public class ConverterConfiguration {
     private final CustomConversionService conversionService;
 
     @EventListener(ContextRefreshedEvent.class)
-    public void onApplicationEvent(ContextRefreshedEvent event) {
+    public void onApplicationEvent() {
         converters.forEach(conversionService::addConverter);
     }
 }
