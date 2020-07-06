@@ -10,4 +10,6 @@ public interface CardService {
     CardDto createCard(CardDto cardDto);
     CardDto updateCard(CardDto cardDto);
     void deleteCard(Long id);
+
+    List<CardDto> searchCards(String searchQuery);
 }

@@ -1,5 +1,6 @@
 package app.service.impl;
 
+import app.converter.CustomConversionService;
 import app.dto.CardDto;
 import app.entity.Card;
 import app.entity.Group;
@@ -11,10 +12,11 @@ import app.repository.TagRepository;
 import app.service.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.ConversionService;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.criteria.JoinType;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +29,7 @@ public class CardServiceImpl implements CardService {
 
     private final CardRepository cardRepository;
     private final TagRepository tagRepository;
-    private final ConversionService conversionService;
+    private final CustomConversionService conversionService;
 
     @Override
     public List<CardDto> getAll() {
@@ -73,5 +75,23 @@ public class CardServiceImpl implements CardService {
     @Override
     public void deleteCard(Long id) {
 
+    }
+
+    @Override
+    public List<CardDto> searchCards(String searchQuery) {
+
+        String likeQ = "%" + searchQuery.trim() + "%";
+        Specification<Card> cardSpecification = ((root, query, cb) -> {
+            query.distinct(true);
+            return cb.or(
+                    cb.like(root.get("title"), likeQ),
+                    cb.like(root.get("description"), likeQ),
+                    cb.like(root.join("tags", JoinType.LEFT).get("tagName"), likeQ)
+            );
+        });
+
+        List<Card> cards = cardRepository.findAll(cardSpecification);
+
+        return conversionService.convert(cards, CardDto.class);
     }
 }

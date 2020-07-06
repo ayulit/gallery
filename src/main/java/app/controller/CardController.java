@@ -56,4 +56,9 @@ public class CardController {
     public String handleFile(@RequestParam("file") MultipartFile file) throws IOException {
         return IOUtils.toString(file.getBytes(), StandardCharsets.UTF_8.name());
     }
+
+    @GetMapping("/search")
+    public List<CardDto> searchCards(@RequestParam("query") String searchQuery) {
+        return cardService.searchCards(searchQuery);
+    }
 }
