@@ -74,7 +74,7 @@ alter table card_tags add constraint FK_card_tags_card_tag_id
     foreign key (card_id) references card (id);
 
 
-------------------  POPULATE
+--                          POPULATE
 
 
 insert into category (group_name) values ('Animals'), ('Military'), ('Girls'), ('Kids');
