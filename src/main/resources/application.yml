@@ -4,6 +4,8 @@ spring:
     username: root
     password: mypassword
     driver-class-name: com.mysql.cj.jdbc.Driver
+    # use schema.sql & data.sql NOT only with embedded DB
+    initialization-mode: always
   # SQL logs
   jpa:
 #    show-sql: true
@@ -15,3 +17,7 @@ spring:
 #        show_sql: true
         use_sql_comments: true
         dialect: org.hibernate.dialect.MySQL8Dialect
+logging:
+  level:
+    # logging of sql schema creation & population
+    org.springframework.jdbc.datasource.init.ScriptUtils: DEBUG
