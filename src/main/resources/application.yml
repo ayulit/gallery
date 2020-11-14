@@ -6,6 +6,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     # use schema.sql & data.sql NOT only with embedded DB
     initialization-mode: always
+    # TODO: delete after Liquibase establishment
+    continue-on-error: true
   # SQL logs
   jpa:
 #    show-sql: true
