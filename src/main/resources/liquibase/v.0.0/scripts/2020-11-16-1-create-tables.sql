@@ -1,0 +1,47 @@
+CREATE TABLE IF NOT EXISTS card
+(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    added DATETIME(6) NULL,
+    description VARCHAR(255) NULL,
+    link VARCHAR(2083) NULL,
+    dpi SMALLINT NULL,
+    title VARCHAR(255) NULL,
+    version BIGINT NULL,
+    group_id BIGINT NULL
+--    tbd
+);
+
+CREATE TABLE IF NOT EXISTS card_audit
+(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    operation VARCHAR(255) NULL,
+    updated DATETIME(6) NULL,
+    version BIGINT NULL,
+    card_id BIGINT NULL
+);
+
+CREATE TABLE IF NOT EXISTS card_tags
+(
+    card_id BIGINT NOT NULL,
+    tag_id  BIGINT NOT NULL,
+    PRIMARY KEY (card_id, tag_id)
+);
+
+CREATE TABLE IF NOT EXISTS category (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    group_name VARCHAR(255) NOT NULL
+--    parent_id BIGINT NULL
+);
+
+CREATE TABLE IF NOT EXISTS person (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    user_name VARCHAR(255) NULL,
+    user_type VARCHAR(255) NULL
+);
+
+CREATE TABLE IF NOT EXISTS tag
+(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    tag_name VARCHAR(255) NOT NULL
+);
