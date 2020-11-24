@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Photoshop Templates</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link th:href="@{/css/site.css}" rel="stylesheet" />
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Photoshop Templates</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>Welcome to Photoshop Templates Site</h1>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+        <input type="text" class="form-control" id="datepicker" aria-describedby="basic-addon1"/>
+    </div>
+
+    <div class="l_col1">
+        <ul th:each="group: ${groups}">
+            <li th:text="${group.value}">Category</li>
+        </ul>
+    </div>
+
+    <div class="cards">
+        <div class="card" th:each="card: ${cards}">
+            <div class="title">
+                <h2 th:text="${card.title}">Title</h2>
+            </div>
+            <div class="date" th:text="${card.date}">Date</div>
+            <div class="category">
+                Category: <a href="" th:text="${groups.get(card.groupId)}">Group</a>
+            </div>
+            <div class="description" th:text="${card.description}">Description</div>
+
+            <div class="meta">
+                <div class="dpi"><span th:text="${card.meta.dpi}">Dpi</span> dpi</div>
+            </div>
+            <div class="link">
+                <a th:href="${card.link}">Download</a>
+            </div>
+            <br/>
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"><p class="text-muted">@Copyright 2020</p></div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

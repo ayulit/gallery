@@ -1,0 +1,23 @@
+body{
+    padding-top: 70px;
+    padding-bottom: 60px;
+}
+
+footer{
+    height: 50px;
+}
+
+.l_col1, .cards {
+    float: left;
+    overflow: hidden;
+}
+
+.l_col1 {
+    width: 216px;
+    margin-left: 14px;
+    padding: 14px;
+}
+
+.r_col {
+    width: 650px;
+}

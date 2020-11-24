@@ -1,4 +1,4 @@
-package app.controller.html;
+package app.controller.web;
 
 import java.util.List;
 import java.util.Map;
@@ -9,25 +9,24 @@ import app.dto.CardDto;
 import app.dto.GroupDto;
 import app.service.CardService;
 import app.service.GroupService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/ui/cards")
-public class CardHtmlController extends CardController {
+@RequestMapping("/")
+@RequiredArgsConstructor(onConstructor_ = {@Autowired })
+public class WebController {
 
+    private final CardService cardService;
     private final GroupService groupService;
-
-    public CardHtmlController(CardService cardService, GroupService groupService) {
-        super(cardService);
-        this.groupService = groupService;
-    }
 
     @GetMapping
     public String getAll(Model model) {
-        List<CardDto> cards = getAll();
+        List<CardDto> cards = cardService.getAll();
 
         Map<Long, String> groups = groupService.getAll()
                 .stream()
@@ -35,7 +34,7 @@ public class CardHtmlController extends CardController {
 
         model.addAttribute("cards", cards);
         model.addAttribute("groups", groups);
-        return "cards";
+        return "index";
     }
 
 }
