@@ -25,6 +25,7 @@ public class WebController {
     private final GroupService groupService;
 
     @GetMapping
+    // модель приходит с UI
     public String getAll(Model model) {
         List<CardDto> cards = cardService.getAll();
 
@@ -32,8 +33,11 @@ public class WebController {
                 .stream()
                 .collect(Collectors.toMap(GroupDto::getId, GroupDto::getGroupName));
 
+        // наполняем модель
         model.addAttribute("cards", cards);
         model.addAttribute("groups", groups);
+
+        // возвращаем имя вьюхи
         return "index";
     }
 
